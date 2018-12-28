@@ -15,7 +15,7 @@ function md2html(mdStr) {
     let renderer = new marked.Renderer();
     renderer.heading = function (text, level) {
         const header = `
-            <h${level} class="title" data-index="${index}">
+            <h${level} class="title">
                 <span>${text}</span>
             </h${level}>
         `;
@@ -45,9 +45,12 @@ function md2html(mdStr) {
 
     renderer.code = function (code, language, escaped) {
         code = code || '';
+        // console.log(hljs.listLanguages());
+        // language = language || 'plaintext';
         const rows = code.split(/[\n\r]/);
         const rowsHtml = rows.map(r => {
-            const res = hljs.highlight(language, r).value.replace(/^(\s+)/g, function ($, $1) {
+            const codeHtml = language ? hljs.highlight(language, r) : hljs.highlightAuto(r);
+            const res = codeHtml.value.replace(/^(\s+)/g, function ($, $1) {
                 return new Array($1.length + 1).join('&nbsp;');
             });
             return `<p style="margin-top: 3px;margin-bottom: 3px;border-width: 0px;border-style: initial;border-color: initial;line-height: 16px;font-size: 12px;text-align: justify;word-break: break-all;overflow-wrap: break-word;hyphens: auto;white-space: nowrap !important;">${res}</p>`;
