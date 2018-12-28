@@ -1,0 +1,49 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font: 14px/1.5 Consolas, '微软雅黑', sans-serif;
+    color: #333;
+    height: 100%;
+}
+
+.clearfix:after {
+    display: table;
+    clear: both;
+    content: '';
+    visibility: hidden;
+}
+
+.container {
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    height: 100%;
+}
+
+.main > div {
+    float: left;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.main .editor-wrap {
+    padding: 10px 0;
+    border-right: 1px solid #eaeaea;
+}
+
+.main .editor-wrap .editor,
+.main .prev-wrap .prev {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.main .prev-wrap .prev {
+    padding: 10px;
+    overflow: auto;
+}
