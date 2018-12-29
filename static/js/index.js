@@ -113,7 +113,8 @@
         }, false);
 
         ms[2].addEventListener('click', () => {
-            showTips(tNode, '【待开发】存储为图片');
+            // showTips(tNode, '【待开发】存储为图片');
+            location.href = '/pic';
         }, false);
 
         ms[3].addEventListener('click', () => {

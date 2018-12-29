@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const Koa = require('koa');
 const Router = require('koa-router');
@@ -7,6 +8,7 @@ const BodyParser = require('koa-bodyparser');
 
 const marked = require('marked');
 const hljs = require('highlight.js');
+const puppeteer = require('puppeteer');
 
 const app = new Koa();
 const router = new Router();
@@ -105,6 +107,31 @@ router.get('/', (ctx, next) => {
     } else {
         ctx.set('status', 404);
     }
+}).get('/pic', async (ctx, next) => {
+    const tmpPath = './tmp-' + new Date().getTime() + '.png';
+    const browser = await puppeteer.launch({
+        headless: true,
+        defaultViewport: {
+            width: 640,
+            height: 640
+        }
+    });
+    const page = await browser.newPage();
+    // console.log(ctx.request);
+    await page.goto(ctx.request.origin + '/screenshot');
+    await page.screenshot({path: tmpPath, fullPage: true});
+    await browser.close();
+    const resBody = fs.readFileSync(tmpPath);
+    fs.chmodSync(tmpPath, fs.constants.S_IWOTH);
+    // fs.unlinkSync('file://' + path.resolve(__dirname, tmpPath));
+    fs.unlinkSync(tmpPath);
+    // ctx.set('Content-Type', 'image/png');
+    ctx.set('Content-Type', 'application/octet-stream');
+    ctx.set('Content-Disposition', 'attachment; filename=article.png');
+    ctx.body = resBody;
+}).get('/screenshot', (ctx, next) => {
+    ctx.type = 'text/html';
+    ctx.body = Storage.html;
 });
 
 app.use(Assets('./static', {gzip: true}))
