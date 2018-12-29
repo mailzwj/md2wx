@@ -236,3 +236,11 @@ body {
     top: -9999px;
     left: -9999px;
 }
+
+.sel-file {
+    position: absolute;
+    top: -999px;
+    left: -999px;
+    z-index: -1;
+    opacity: 0;
+}

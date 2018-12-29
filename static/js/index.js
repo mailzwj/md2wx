@@ -23,6 +23,10 @@
         const pNode = document.querySelector('#J_Preview');
         const tNode = document.querySelector('#J_Tips');
         const cNode = document.querySelector('#J_Copyer');
+        const sNode = document.querySelector('#J_SelectFile');
+        const mw = document.querySelector('#J_MenuWrap');
+        const mc = document.querySelector('#J_MenuCtl');
+        const ms = mw.querySelectorAll('.J_Menu');
         const editor = monaco.editor.create(eNode, {
             language: 'markdown',
             lineNumbers: 'on',
@@ -64,9 +68,26 @@
             }, 500);
         });
 
-        const mw = document.querySelector('#J_MenuWrap');
-        const mc = document.querySelector('#J_MenuCtl');
-        const ms = mw.querySelectorAll('.J_Menu');
+        sNode.addEventListener('change', () => {
+            const files = sNode.files || [];
+            if (files.length) {
+                const file = files[0];
+                // console.log(file);
+                if (file.name.match(/\.(md|markdown)$/)) {
+                    const reader = new FileReader();
+                    reader.addEventListener('load', (ev) => {
+                        const target = ev.target;
+                        // console.log(target.result);
+                        editor.setValue(target.result);
+                        ms[1].click();
+                    });
+                    reader.readAsText(file);
+                } else {
+                    showTips(tNode, '仅支持导入markdown文件');
+                }
+            }
+            sNode.value = '';
+        }, false);
 
         mc.addEventListener('click', () => {
             if (mw.classList.contains('expand')) {
@@ -122,7 +143,8 @@
         }, false);
 
         ms[4].addEventListener('click', () => {
-            showTips(tNode, '【待开发】导入md文件');
+            // showTips(tNode, '【待开发】导入md文件');
+            sNode.click();
         }, false);
 
         ms[5].addEventListener('click', () => {
