@@ -9,6 +9,68 @@ body {
     height: 100%;
 }
 
+@font-face {
+    font-family: 'icomoon';
+    src: url('/fonts/icomoon.eot?zc56dw');
+    src: url('/fonts/icomoon.eot?zc56dw#iefix') format('embedded-opentype'),
+        url('/fonts/icomoon.ttf?zc56dw') format('truetype'),
+        url('/fonts/icomoon.woff?zc56dw') format('woff'),
+        url('/fonts/icomoon.svg?zc56dw#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    /* speak: none; */
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 复制HTML */
+.icon-files-empty:before {
+    content: "\e925";
+}
+
+/* 存储为md */
+.icon-folder-download:before {
+    content: "\e933";
+}
+
+/* 导入md */
+.icon-folder-upload:before {
+    content: "\e934";
+}
+
+/* 编译 */
+.icon-redo2:before {
+    content: "\e968";
+}
+
+/* 导出HTML */
+.icon-forward:before {
+    content: "\e969";
+}
+
+/* 存储为截图 */
+.icon-scissors:before {
+    content: "\ea5a";
+}
+
+/* 复制md源码 */
+.icon-embed2:before {
+    content: "\ea80";
+}
+
 .clearfix:after {
     display: table;
     clear: both;
@@ -17,6 +79,7 @@ body {
 }
 
 .container {
+    position: relative;
     height: 100%;
     overflow: hidden;
 }
@@ -46,4 +109,130 @@ body {
 .main .prev-wrap .prev {
     padding: 10px;
     overflow: auto;
+}
+
+.menu-wrap {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    /* line-height: 48px; */
+    font-size: 0;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 50%;
+}
+
+.menu-wrap > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 48px;
+    font-size: 24px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.menu-wrap > span[class^="icon-"],
+.menu-wrap > span[class*=" icon-"] {
+    opacity: 0;
+    transition: opacity .2s ease-out, transform .2s ease-out;
+}
+
+.menu-wrap.expand > span[class^="icon-"],
+.menu-wrap.expand > span[class*=" icon-"] {
+    opacity: 1;
+}
+
+.menu-wrap.expand .menu-copy {
+    transform: translate(0, 100%);
+}
+
+.menu-wrap.expand .menu-redo2 {
+    transform: translate(0, 200%);
+}
+
+.menu-wrap.expand .menu-scissors {
+    transform: translate(0, 300%);
+}
+
+.menu-wrap.expand .menu-download {
+    transform: translate(0, 400%);
+}
+
+.menu-wrap.expand .menu-upload {
+    transform: translate(0, 500%);
+}
+
+.menu-wrap.expand .menu-forward {
+    transform: translate(0, 600%);
+}
+
+.menu-wrap.expand .menu-embed2 {
+    transform: translate(0, 700%);
+}
+
+.menu-wrap > span:hover {
+    color: #f00;
+}
+
+.menu-wrap .menu-ctl {
+    z-index: 3;
+}
+
+.menu-wrap .menu-ctl:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.menu-wrap .menu-ctl:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    content: '';
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    box-shadow: 0 -6px 0 0 #333, 0 6px 0 0 #333;
+}
+
+.menu-wrap .menu-ctl:hover:before {
+    background-color: #f00;
+    box-shadow: 0 -6px 0 0 #f00, 0 6px 0 0 #f00;
+}
+
+.actions-container {
+    padding-left: 0 !important;
+}
+
+.tips {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    z-index: -1;
+    padding: 5px 15px;
+    opacity: 0;
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, .6);
+    color: #eee;
+    border-radius: 3px;
+    transform: translate(-50%, 0);
+    transition: top .2s ease-out, z-index .2s ease-out, opacity .2s ease-out;
+}
+
+.tips.show {
+    top: 10%;
+    z-index: 1000;
+    opacity: 1;
+}
+
+.copyer {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
 }

@@ -10,6 +10,10 @@ const hljs = require('highlight.js');
 
 const app = new Koa();
 const router = new Router();
+const Storage = {
+    md: '',
+    html: ''
+};
 
 function md2html(mdStr) {
     let renderer = new marked.Renderer();
@@ -75,14 +79,32 @@ function md2html(mdStr) {
     return marked(mdStr);
 }
 
+function wrap(html) {
+    const tpl = fs.readFileSync('./views/export-tpl.html');
+    const output = tpl.toString('utf-8');
+    return output.replace(/\{article\}/g, html || '');
+}
+
 router.get('/', (ctx, next) => {
     ctx.type = 'text/html';
     ctx.body = fs.readFileSync('./views/index.html');
 }).post('/prev', (ctx, next) => {
     const bd = ctx.request.body;
     let md = bd.md || '';
+    let html = md2html(md);
+    Storage.md = md;
+    Storage.html = wrap(html);
     ctx.type = 'application/json';
-    ctx.body = {html: md2html(md)};
+    ctx.body = {html: html};
+}).get(['/save', '/save/:type'], (ctx, next) => {
+    const params = ctx.params || {};
+    if (params.type === 'md' || params.type === 'html') {
+        ctx.set('Content-Type', 'application/octet-stream');
+        ctx.set('Content-Disposition', 'attachment; filename=article.' + params.type);
+        ctx.body = Storage[params.type] || '';
+    } else {
+        ctx.set('status', 404);
+    }
 });
 
 app.use(Assets('./static', {gzip: true}))
