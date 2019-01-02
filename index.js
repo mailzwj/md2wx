@@ -114,7 +114,8 @@ router.get('/', (ctx, next) => {
         defaultViewport: {
             width: 640,
             height: 640
-        }
+        },
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
     // console.log(ctx.request);
