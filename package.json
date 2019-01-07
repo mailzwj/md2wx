@@ -18,5 +18,8 @@
     "koa-static": "^5.0.0",
     "marked": "^0.5.2",
     "puppeteer": "^1.11.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.14"
   }
 }
