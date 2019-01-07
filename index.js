@@ -61,8 +61,8 @@ function md2html(mdStr) {
             });
             return `<p style="margin-top: 3px;margin-bottom: 3px;border-width: 0px;border-style: initial;border-color: initial;line-height: 16px;font-size: 12px;text-align: justify;word-break: break-all;overflow-wrap: break-word;hyphens: auto;white-space: nowrap !important;">${res}</p>`;
         });
-        return `<blockquote style="padding: 0;border-width: 0px;border-style: initial;border-color: initial;padding-left: 0px;color: rgb(51, 51, 51);white-space: normal;">
-            <pre style="border-width: 0px;border-style: initial;border-color: initial;padding: 1em;overflow: auto;background-color: rgb(45, 45, 45);color: rgb(204, 204, 204);font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;max-width: 100%;overflow-wrap: normal;word-spacing: normal;word-break: normal;line-height: 1.5;tab-size: 4;hyphens: none;box-sizing: border-box !important;">${rowsHtml.join('')}</pre>
+        return `<blockquote style="padding: 10px;border-width: 0px;border-style: initial;border-color: initial;color: rgb(51, 51, 51);font-size:14px;white-space: normal;overflow:auto;">
+            ${rowsHtml.join('')}
         </blockquote>`;
     };
 
