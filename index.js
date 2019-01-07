@@ -59,9 +59,9 @@ function md2html(mdStr) {
             const res = codeHtml.value.replace(/^(\s+)/g, function ($, $1) {
                 return new Array($1.length + 1).join('&nbsp;');
             });
-            return `<p style="margin: 3px 10px;border-width: 0px;border-style: initial;border-color: initial;line-height: 16px;font-size: 14px;text-align: justify;word-break: break-all;overflow-wrap: break-word;hyphens: auto;white-space: nowrap !important;">${res}</p>`;
+            return `<p style="margin: 3px 0;padding: 0 10px;border-width: 0px;border-style: initial;border-color: initial;line-height:16px;font-size:14px;text-align: justify;word-break: break-all;overflow-wrap: break-word;hyphens: auto;white-space: nowrap !important;">${res}</p>`;
         });
-        return `<blockquote style="padding: 10px;border-width: 0px;border-style: initial;border-color: initial;color: rgb(51, 51, 51);font-size:14px;white-space: normal;overflow:auto;">
+        return `<blockquote style="padding: 10px 0;border-width: 0px;border-style: initial;border-color: initial;color: rgb(51, 51, 51);white-space: normal;overflow:auto;">
             ${rowsHtml.join('')}
         </blockquote>`;
     };
