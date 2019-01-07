@@ -61,7 +61,7 @@ function md2html(mdStr) {
             });
             return `<p style="margin: 3px 0;border-width: 0px;border-style: initial;border-color: initial;line-height:16px;font-size:14px;text-align: justify;word-break: break-all;overflow-wrap: break-word;hyphens: auto;white-space: nowrap !important;"><span style="margin: 0 10px;white-space: nowrap !important;">${res}</span></p>`;
         });
-        return `<blockquote style="padding: 10px 0;border-width: 0px;border-style: initial;border-color: initial;color: rgb(51, 51, 51);white-space: normal;overflow:auto;">
+        return `<blockquote style="padding: 10px 0;border-width: 0px;border-style: initial;border-color: initial;color: #eee;background-color: #000;border-radius:5px;white-space: normal;overflow:auto;">
             ${rowsHtml.join('')}
         </blockquote>`;
     };

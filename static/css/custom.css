@@ -295,18 +295,18 @@ pre {
 
 code {
     margin: 0;
-    padding: .2em 0;
+    padding: .2em 5px;
     border-radius: 3px;
     font-size: 85%;
     background-color: rgba(217, 81, 60, .04);
     color: #d9513c
 }
 
-code:after,
+/* code:after,
 code:before {
     letter-spacing: -.2em;
     content: "\00a0"
-}
+} */
 
 pre code {
     display: inline;
@@ -357,8 +357,8 @@ kbd kbd {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     word-wrap: break-word;
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 2;
     color: #3c3c3c
 }
 
