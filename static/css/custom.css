@@ -349,7 +349,7 @@ kbd kbd {
 
 .markdown-body {
     margin: 10px 30px;
-    font-family: 'PingFang SC', monospace, -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
+    font-family: "Optima-Regular", "PingFangTC-light", monospace, -apple-system, 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', sans-serif;
     position: relative;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
