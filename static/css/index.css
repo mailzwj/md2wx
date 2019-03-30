@@ -108,6 +108,7 @@ body {
 
 .main .prev-wrap .prev {
     padding: 10px;
+    letter-spacing: 0.5px;
     overflow: auto;
 }
 
