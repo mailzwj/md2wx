@@ -16,7 +16,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "marked": "^0.5.2",
+    "marked": "^0.6.1",
     "puppeteer": "^1.11.0"
   },
   "devDependencies": {
